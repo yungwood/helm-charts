@@ -1,11 +1,6 @@
 name: helm
 
 on:
-  push:
-    branches:
-      - "*"
-    paths:
-      - "charts/**"
   pull_request:
     paths:
       - "charts/**"
