@@ -1,7 +1,7 @@
 image:
   repository: yungwood/ical-filter-proxy
   pullPolicy: IfNotPresent
-  tag: "" # defaults to chart appVersion
+  tag: ""  # defaults to chart appVersion
 
 imagePullSecrets: []
 nameOverride: ""
