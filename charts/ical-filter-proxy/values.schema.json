@@ -101,11 +101,17 @@
                         "summary": {
                           "additionalProperties": false,
                           "properties": {
+                            "prefix": {
+                              "type": "string"
+                            },
                             "replace": {
                               "type": "string"
                             },
                             "remove": {
                               "type": "boolean"
+                            },
+                            "suffix": {
+                              "type": "string"
                             }
                           },
                           "type": "object"
@@ -113,11 +119,17 @@
                         "description": {
                           "additionalProperties": false,
                           "properties": {
+                            "prefix": {
+                              "type": "string"
+                            },
                             "replace": {
                               "type": "string"
                             },
                             "remove": {
                               "type": "boolean"
+                            },
+                            "suffix": {
+                              "type": "string"
                             }
                           },
                           "type": "object"
@@ -147,6 +159,9 @@
               },
               "public": {
                 "type": "boolean"
+              },
+              "publish_name": {
+                "type": "string"
               },
               "token": {
                 "type": "string"
