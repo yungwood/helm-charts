@@ -6,11 +6,34 @@
       "type": "object"
     },
     "args": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "app": {
+      "additionalProperties": false,
+      "properties": {
+        "port": {
+          "maximum": 65535,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "port"
+      ],
+      "type": "object"
+    },
+    "command": {
+      "items": {
+        "type": "string"
+      },
       "type": "array"
     },
     "config": {
+      "additionalProperties": false,
       "properties": {
-        "additionalProperties": false,
         "calendars": {
           "items": {
             "additionalProperties": false,
@@ -35,6 +58,9 @@
                         "summary": {
                           "additionalProperties": false,
                           "properties": {
+                            "empty": {
+                              "type": "boolean"
+                            },
                             "prefix": {
                               "type": "string"
                             },
@@ -53,6 +79,9 @@
                         "description": {
                           "additionalProperties": false,
                           "properties": {
+                            "empty": {
+                              "type": "boolean"
+                            },
                             "prefix": {
                               "type": "string"
                             },
@@ -71,6 +100,30 @@
                         "location": {
                           "additionalProperties": false,
                           "properties": {
+                            "empty": {
+                              "type": "boolean"
+                            },
+                            "prefix": {
+                              "type": "string"
+                            },
+                            "suffix": {
+                              "type": "string"
+                            },
+                            "contains": {
+                              "type": "string"
+                            },
+                            "regex": {
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "url": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "empty": {
+                              "type": "boolean"
+                            },
                             "prefix": {
                               "type": "string"
                             },
@@ -145,6 +198,18 @@
                             }
                           },
                           "type": "object"
+                        },
+                        "url": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "replace": {
+                              "type": "string"
+                            },
+                            "remove": {
+                              "type": "boolean"
+                            }
+                          },
+                          "type": "object"
                         }
                       },
                       "type": "object"
@@ -174,6 +239,34 @@
               "name"
             ],
             "allOf": [
+              {
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "public",
+                        "token"
+                      ],
+                      "properties": {
+                        "public": {
+                          "const": true
+                        }
+                      }
+                    },
+                    {
+                      "required": [
+                        "public",
+                        "token_file"
+                      ],
+                      "properties": {
+                        "public": {
+                          "const": true
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
               {
                 "anyOf": [
                   {
@@ -282,9 +375,6 @@
     "ingress": {
       "properties": {
         "annotations": {
-          "additionalProperties": {
-            "type": "string"
-          },
           "properties": {},
           "type": "object"
         },
@@ -367,19 +457,14 @@
       "type": "object"
     },
     "replicaCount": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "revisionHistoryLimit": {
+      "minimum": 0,
       "type": "integer"
     },
     "resources": {
-      "properties": {
-        "limits": {
-          "properties": {},
-          "type": "object"
-        },
-        "requests": {
-          "properties": {},
-          "type": "object"
-        }
-      },
       "type": "object"
     },
     "securityContext": {
@@ -389,6 +474,8 @@
     "service": {
       "properties": {
         "port": {
+          "maximum": 65535,
+          "minimum": 1,
           "type": "integer"
         },
         "type": {
@@ -400,9 +487,6 @@
     "serviceAccount": {
       "properties": {
         "annotations": {
-          "additionalProperties": {
-            "type": "string"
-          },
           "properties": {},
           "type": "object"
         },
@@ -423,51 +507,27 @@
     },
     "volumeMounts": {
       "items": {
-        "properties": {
-          "mountPath": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "readOnly": {
-            "type": "boolean"
-          }
-        },
         "type": "object"
       },
       "type": "array"
     },
     "volumes": {
       "items": {
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "secret": {
-            "properties": {
-              "optional": {
-                "type": "boolean"
-              },
-              "secretName": {
-                "type": "string"
-              }
-            },
-            "type": "object"
-          }
-        },
         "type": "object"
       },
       "type": "array"
     }
   },
   "required": [
+    "app",
+    "command",
     "image",
     "config",
     "extraResources",
     "livenessProbe",
     "readinessProbe",
-    "replicaCount"
+    "replicaCount",
+    "revisionHistoryLimit"
   ],
   "type": "object"
 }
