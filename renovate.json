@@ -2,5 +2,19 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "enabledManagers": [
+    "github-actions",
+    "helmv3",
+    "helm-values"
+  ],
+  "packageRules": [
+    {
+      "description": "Group GitHub Actions updates together",
+      "matchManagers": [
+        "github-actions"
+      ],
+      "groupName": "github-actions"
+    }
   ]
 }
