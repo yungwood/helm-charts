@@ -2,8 +2,12 @@ name: helm
 
 on:
   pull_request:
-    paths:
-      - "charts/**"
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
 
 jobs:
   lint-test:
