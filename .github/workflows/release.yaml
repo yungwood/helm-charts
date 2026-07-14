@@ -5,6 +5,13 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
+concurrency:
+  group: release-charts
+  cancel-in-progress: false
+
 jobs:
   release:
     permissions:
@@ -12,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6.0.3
         with:
           fetch-depth: 0
 
@@ -22,7 +29,9 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       - name: Install Helm
-        uses: azure/setup-helm@v4
+        uses: azure/setup-helm@v4.3.1
+        with:
+          version: v3.14.4
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
@@ -30,3 +39,18 @@ jobs:
         uses: helm/chart-releaser-action@v1.7.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Publish Artifact Hub metadata
+        run: |
+          worktree="/tmp/helm-charts-gh-pages-${GITHUB_RUN_ID}"
+          git fetch origin gh-pages
+          git worktree add "$worktree" origin/gh-pages
+          cp artifacthub-repo.yml "$worktree/artifacthub-repo.yml"
+          git -C "$worktree" add artifacthub-repo.yml
+          if git -C "$worktree" diff --cached --quiet; then
+            echo "Artifact Hub metadata unchanged"
+          else
+            git -C "$worktree" commit -m "Update Artifact Hub metadata"
+            git -C "$worktree" push origin HEAD:gh-pages
+          fi
+          git worktree remove "$worktree"

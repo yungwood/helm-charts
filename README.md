@@ -17,7 +17,7 @@ You can then run `helm search repo yungwood` to see the charts.
 
 ## Charts
 
-- [ical-filter-proxy](https://github.com/yungwood/helm-charts/tree/master/charts/ical-filter-proxy)
+- [ical-filter-proxy](https://github.com/yungwood/helm-charts/tree/main/charts/ical-filter-proxy)
   - Application: [yungwood/ical-filter-proxy](https://github.com/yungwood/ical-filter-proxy)
   - Source of truth: synced from the application repository
 
