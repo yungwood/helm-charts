@@ -39,3 +39,18 @@ jobs:
         uses: helm/chart-releaser-action@v1.7.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Publish Artifact Hub metadata
+        run: |
+          worktree="/tmp/helm-charts-gh-pages-${GITHUB_RUN_ID}"
+          git fetch origin gh-pages
+          git worktree add "$worktree" origin/gh-pages
+          cp artifacthub-repo.yml "$worktree/artifacthub-repo.yml"
+          git -C "$worktree" add artifacthub-repo.yml
+          if git -C "$worktree" diff --cached --quiet; then
+            echo "Artifact Hub metadata unchanged"
+          else
+            git -C "$worktree" commit -m "Update Artifact Hub metadata"
+            git -C "$worktree" push origin HEAD:gh-pages
+          fi
+          git worktree remove "$worktree"
