@@ -2,6 +2,18 @@ apiVersion: v1
 entries:
   ical-filter-proxy:
   - apiVersion: v2
+    appVersion: 0.3.1
+    created: "2026-07-15T19:39:35.307919851Z"
+    description: iCal proxy with support for user-defined filtering rules
+    digest: 1e3691b057eb2b0ec2aeadda69875cb1399623d752a522af73fe7f4a21d73f58
+    maintainers:
+    - name: yungwood
+    name: ical-filter-proxy
+    type: application
+    urls:
+    - https://github.com/yungwood/helm-charts/releases/download/ical-filter-proxy-0.3.1/ical-filter-proxy-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v2
     appVersion: 0.3.0
     created: "2026-07-13T17:38:02.066318556Z"
     description: iCal proxy with support for user-defined filtering rules
@@ -61,4 +73,4 @@ entries:
     urls:
     - https://github.com/yungwood/helm-charts/releases/download/ical-filter-proxy-0.0.2/ical-filter-proxy-0.0.2.tgz
     version: 0.0.2
-generated: "2026-07-13T17:38:02.066340447Z"
+generated: "2026-07-15T19:39:35.307967002Z"
