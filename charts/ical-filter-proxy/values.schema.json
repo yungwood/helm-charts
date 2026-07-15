@@ -1,5 +1,83 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "stringMatchRule": {
+      "additionalProperties": false,
+      "properties": {
+        "empty": {
+          "type": "boolean"
+        },
+        "prefix": {
+          "type": "string"
+        },
+        "suffix": {
+          "type": "string"
+        },
+        "contains": {
+          "type": "string"
+        },
+        "contains_any": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "contains_all": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "regex": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "stringTransformRule": {
+      "additionalProperties": false,
+      "properties": {
+        "prefix": {
+          "type": "string"
+        },
+        "replace": {
+          "type": "string"
+        },
+        "remove": {
+          "type": "boolean"
+        },
+        "replace_text": {
+          "additionalProperties": false,
+          "properties": {
+            "all": {
+              "type": "boolean"
+            },
+            "new": {
+              "type": "string"
+            },
+            "old": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "old"
+          ],
+          "type": "object"
+        },
+        "suffix": {
+          "type": "string"
+        },
+        "trim_prefix": {
+          "type": "string"
+        },
+        "trim_suffix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
   "properties": {
     "affinity": {
       "properties": {},
@@ -14,14 +92,12 @@
     "app": {
       "additionalProperties": false,
       "properties": {
-        "port": {
-          "maximum": 65535,
-          "minimum": 1,
-          "type": "integer"
+        "address": {
+          "type": "string"
         }
       },
       "required": [
-        "port"
+        "address"
       ],
       "type": "object"
     },
@@ -56,88 +132,16 @@
                       "additionalProperties": false,
                       "properties": {
                         "summary": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "empty": {
-                              "type": "boolean"
-                            },
-                            "prefix": {
-                              "type": "string"
-                            },
-                            "suffix": {
-                              "type": "string"
-                            },
-                            "contains": {
-                              "type": "string"
-                            },
-                            "regex": {
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
+                          "$ref": "#/$defs/stringMatchRule"
                         },
                         "description": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "empty": {
-                              "type": "boolean"
-                            },
-                            "prefix": {
-                              "type": "string"
-                            },
-                            "suffix": {
-                              "type": "string"
-                            },
-                            "contains": {
-                              "type": "string"
-                            },
-                            "regex": {
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
+                          "$ref": "#/$defs/stringMatchRule"
                         },
                         "location": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "empty": {
-                              "type": "boolean"
-                            },
-                            "prefix": {
-                              "type": "string"
-                            },
-                            "suffix": {
-                              "type": "string"
-                            },
-                            "contains": {
-                              "type": "string"
-                            },
-                            "regex": {
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
+                          "$ref": "#/$defs/stringMatchRule"
                         },
                         "url": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "empty": {
-                              "type": "boolean"
-                            },
-                            "prefix": {
-                              "type": "string"
-                            },
-                            "suffix": {
-                              "type": "string"
-                            },
-                            "contains": {
-                              "type": "string"
-                            },
-                            "regex": {
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
+                          "$ref": "#/$defs/stringMatchRule"
                         }
                       },
                       "type": "object"
@@ -152,64 +156,16 @@
                       "additionalProperties": false,
                       "properties": {
                         "summary": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "prefix": {
-                              "type": "string"
-                            },
-                            "replace": {
-                              "type": "string"
-                            },
-                            "remove": {
-                              "type": "boolean"
-                            },
-                            "suffix": {
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
+                          "$ref": "#/$defs/stringTransformRule"
                         },
                         "description": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "prefix": {
-                              "type": "string"
-                            },
-                            "replace": {
-                              "type": "string"
-                            },
-                            "remove": {
-                              "type": "boolean"
-                            },
-                            "suffix": {
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
+                          "$ref": "#/$defs/stringTransformRule"
                         },
                         "location": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "replace": {
-                              "type": "string"
-                            },
-                            "remove": {
-                              "type": "boolean"
-                            }
-                          },
-                          "type": "object"
+                          "$ref": "#/$defs/stringTransformRule"
                         },
                         "url": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "replace": {
-                              "type": "string"
-                            },
-                            "remove": {
-                              "type": "boolean"
-                            }
-                          },
-                          "type": "object"
+                          "$ref": "#/$defs/stringTransformRule"
                         }
                       },
                       "type": "object"
@@ -232,6 +188,9 @@
                 "type": "string"
               },
               "token_file": {
+                "type": "string"
+              },
+              "user_agent": {
                 "type": "string"
               }
             },
@@ -333,6 +292,18 @@
       ],
       "type": "object"
     },
+    "env": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "envFrom": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
     "extraResources": {
       "type": "array",
       "items": {
@@ -433,6 +404,114 @@
       "properties": {},
       "type": "object"
     },
+    "management": {
+      "additionalProperties": false,
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "service": {
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "port": {
+              "maximum": 65535,
+              "minimum": 1,
+              "type": "integer"
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "enabled",
+            "port",
+            "type"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "address",
+        "enabled",
+        "service"
+      ],
+      "type": "object"
+    },
+    "metrics": {
+      "additionalProperties": false,
+      "properties": {
+        "calendarLabels": {
+          "type": "boolean"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "serviceMonitor": {
+          "additionalProperties": false,
+          "properties": {
+            "annotations": {
+              "properties": {},
+              "type": "object"
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "interval": {
+              "type": "string"
+            },
+            "labels": {
+              "properties": {},
+              "type": "object"
+            },
+            "metricRelabelings": {
+              "items": {
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "path": {
+              "type": "string"
+            },
+            "relabelings": {
+              "items": {
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "scheme": {
+              "type": "string"
+            },
+            "scrapeTimeout": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "annotations",
+            "enabled",
+            "interval",
+            "labels",
+            "metricRelabelings",
+            "path",
+            "relabelings",
+            "scheme",
+            "scrapeTimeout"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "calendarLabels",
+        "enabled",
+        "serviceMonitor"
+      ],
+      "type": "object"
+    },
     "nameOverride": {
       "type": "string"
     },
@@ -521,13 +600,39 @@
   "required": [
     "app",
     "command",
+    "env",
+    "envFrom",
     "image",
     "config",
     "extraResources",
     "livenessProbe",
+    "management",
+    "metrics",
     "readinessProbe",
     "replicaCount",
     "revisionHistoryLimit"
+  ],
+  "allOf": [
+    {
+      "not": {
+        "properties": {
+          "management": {
+            "properties": {
+              "enabled": {
+                "const": false
+              }
+            }
+          },
+          "metrics": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    }
   ],
   "type": "object"
 }
