@@ -73,4 +73,34 @@ entries:
     urls:
     - https://github.com/yungwood/helm-charts/releases/download/ical-filter-proxy-0.0.2/ical-filter-proxy-0.0.2.tgz
     version: 0.0.2
-generated: "2026-07-15T19:39:35.307967002Z"
+  synergy-wholesale-exporter:
+  - annotations:
+      artifacthub.io/category: monitoring-logging
+      artifacthub.io/license: MIT
+      artifacthub.io/links: |
+        - name: Source
+          url: https://github.com/yungwood/synergy-wholesale-exporter
+        - name: Helm repository
+          url: https://yungwood.github.io/helm-charts/
+    apiVersion: v2
+    appVersion: 0.1.1
+    created: "2026-07-16T02:06:51.750171909Z"
+    description: Prometheus exporter for Synergy Wholesale domains
+    digest: 36af332bbfce3401db89231c3627906c37f8b888da92769b4459dc70bf0c0115
+    home: https://github.com/yungwood/synergy-wholesale-exporter
+    keywords:
+    - prometheus
+    - exporter
+    - domains
+    - synergy-wholesale
+    maintainers:
+    - name: yungwood
+      url: https://github.com/yungwood
+    name: synergy-wholesale-exporter
+    sources:
+    - https://github.com/yungwood/synergy-wholesale-exporter
+    type: application
+    urls:
+    - https://github.com/yungwood/helm-charts/releases/download/synergy-wholesale-exporter-0.1.1/synergy-wholesale-exporter-0.1.1.tgz
+    version: 0.1.1
+generated: "2026-07-16T02:06:51.750192097Z"
