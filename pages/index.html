@@ -59,16 +59,28 @@
       }
 
       .brand {
+        max-width: 720px;
+      }
+
+      .brand-heading {
         display: flex;
         align-items: center;
         gap: 16px;
       }
 
-      .brand img {
+      .brand-heading img {
         width: 64px;
         height: 64px;
         border-radius: 12px;
         flex: none;
+      }
+
+      .brand-heading h1 {
+        margin: 0;
+      }
+
+      .brand-text p {
+        margin: 12px 0 0;
       }
 
       h1 {
@@ -202,9 +214,11 @@
       <header>
         <div class="topbar">
           <div class="brand">
-            <img src="helm-charts.svg" alt="" width="64" height="64">
-            <div>
+            <div class="brand-heading">
+              <img src="helm-charts.svg" alt="" width="64" height="64">
               <h1>Helm Charts</h1>
+            </div>
+            <div class="brand-text">
               <p>Public Helm chart repository for charts maintained by <a href="https://github.com/yungwood">yungwood</a>.</p>
             </div>
           </div>
@@ -227,6 +241,7 @@ helm search repo yungwood</code></pre>
 
       <section class="panel" aria-labelledby="charts">
         <h2 id="charts">Charts</h2>
+        <p>Package listing provided by <a href="https://artifacthub.io/packages/search?repo=yungwood">Artifact Hub</a>.</p>
         <div class="widget-variant light">
           <div class="artifacthub-widget-group" data-url="https://artifacthub.io/packages/search?repo=yungwood&amp;sort=relevance&amp;page=1" data-theme="light" data-header="false" data-stars="true" data-color="#417598" data-responsive="true" data-loading="true"></div>
         </div>
