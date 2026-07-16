@@ -40,17 +40,17 @@ jobs:
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
-      - name: Publish Artifact Hub metadata
+      - name: Publish GitHub Pages files
         run: |
           worktree="/tmp/helm-charts-gh-pages-${GITHUB_RUN_ID}"
           git fetch origin gh-pages
           git worktree add "$worktree" origin/gh-pages
-          cp artifacthub-repo.yml "$worktree/artifacthub-repo.yml"
-          git -C "$worktree" add artifacthub-repo.yml
+          cp -R pages/. "$worktree/"
+          git -C "$worktree" add --all .
           if git -C "$worktree" diff --cached --quiet; then
-            echo "Artifact Hub metadata unchanged"
+            echo "GitHub Pages files unchanged"
           else
-            git -C "$worktree" commit -m "Update Artifact Hub metadata"
+            git -C "$worktree" commit -m "Update GitHub Pages files"
             git -C "$worktree" push origin HEAD:gh-pages
           fi
           git worktree remove "$worktree"
