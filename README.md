@@ -1,7 +1,5 @@
 # helm-charts GitHub Pages
 
-<img src="helm-charts.svg" alt="Helm charts logo" width="96">
-
 This branch contains the published Helm repository files for
 <https://yungwood.github.io/helm-charts/>.
 That page provides the browsable list of published packages.
