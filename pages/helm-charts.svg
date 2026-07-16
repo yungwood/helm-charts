@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Helm charts</title>
+  <desc id="desc">A ship wheel around stacked chart blocks.</desc>
+  <defs>
+    <ellipse id="handle" cx="64" cy="14" rx="4.5" ry="12"/>
+  </defs>
+  <rect width="128" height="128" rx="24" fill="#172033"/>
+  <circle cx="64" cy="64" r="40" fill="none" stroke="#6aa8ff" stroke-width="7"/>
+  <g fill="#6aa8ff">
+    <use href="#handle"/>
+    <use href="#handle" transform="rotate(36 64 64)"/>
+    <use href="#handle" transform="rotate(72 64 64)"/>
+    <use href="#handle" transform="rotate(108 64 64)"/>
+    <use href="#handle" transform="rotate(144 64 64)"/>
+    <use href="#handle" transform="rotate(180 64 64)"/>
+    <use href="#handle" transform="rotate(216 64 64)"/>
+    <use href="#handle" transform="rotate(252 64 64)"/>
+    <use href="#handle" transform="rotate(288 64 64)"/>
+    <use href="#handle" transform="rotate(324 64 64)"/>
+  </g>
+  <g>
+    <rect x="42" y="42" width="44" height="12" rx="3" fill="#ffffff"/>
+    <rect x="35" y="58" width="58" height="12" rx="3" fill="#d7e7ff"/>
+    <rect x="48" y="74" width="32" height="12" rx="3" fill="#9bc4ff"/>
+  </g>
+</svg>
