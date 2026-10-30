@@ -2,6 +2,31 @@ apiVersion: v1
 entries:
   ical-filter-proxy:
   - apiVersion: v2
+    appVersion: 0.3.2
+    created: "2026-10-30T04:28:30.198390401Z"
+    description: iCal proxy with support for user-defined filtering rules
+    digest: 6bd5d7ff4f883210f5554ffb762459f49e50fd1a3db59ddf16cf39f31fe2b558
+    home: https://yungwood.github.io/ical-filter-proxy/
+    icon: https://raw.githubusercontent.com/yungwood/ical-filter-proxy/main/docs/static/img/logo.svg
+    keywords:
+    - calendar
+    - ical
+    - icalendar
+    - caldav
+    - proxy
+    - filtering
+    - prometheus
+    maintainers:
+    - name: yungwood
+      url: https://github.com/yungwood
+    name: ical-filter-proxy
+    sources:
+    - https://github.com/yungwood/ical-filter-proxy
+    type: application
+    urls:
+    - https://github.com/yungwood/helm-charts/releases/download/ical-filter-proxy-0.3.2/ical-filter-proxy-0.3.2.tgz
+    version: 0.3.2
+  - apiVersion: v2
     appVersion: 0.3.1
     created: "2026-07-15T19:39:35.307919851Z"
     description: iCal proxy with support for user-defined filtering rules
@@ -103,4 +128,4 @@ entries:
     urls:
     - https://github.com/yungwood/helm-charts/releases/download/synergy-wholesale-exporter-0.1.1/synergy-wholesale-exporter-0.1.1.tgz
     version: 0.1.1
-generated: "2026-07-16T02:06:51.750192097Z"
+generated: "2026-10-30T04:28:30.198414606Z"
